@@ -39,7 +39,7 @@ class CategoryController extends Controller
         catch(\Exception $e)
         {
             Log::error($e);
-            return response()->json(['message' => 'Erro inesperado'], 500);
+            return response()->json(['message' => 'Erro inesperado ao buscar categoria'], 500);
         }
     }
 
@@ -61,7 +61,7 @@ class CategoryController extends Controller
             Log::error($e);
             return response()->json
             ([
-                'message' => "Erro ao criar categoria! O valor informado para o campo Categoria já existe.",
+                'message' => "Erro ao criar categoria! O valor informado para o campo Categoria já existe",
                 'error'   => $e->getMessage()
             ], 400);
         }
@@ -73,7 +73,7 @@ class CategoryController extends Controller
         catch(\Exception $e)
         {
             Log::error($e);
-            return response()->json(['message' => "Erro inesperado"], 500);
+            return response()->json(['message' => "Erro inesperado ao criar categoria"], 500);
         }
     }
 
@@ -97,7 +97,7 @@ class CategoryController extends Controller
         catch(\Exception $e)
         {
             Log::error($e);
-            return response()->json(['message' => "Erro inesperado"], 500);
+            return response()->json(['message' => "Erro inesperado ao atualizar categoria"], 500);
         }
     }
 
@@ -119,7 +119,7 @@ class CategoryController extends Controller
         catch(\Exception $e)
         {
             Log::error($e);
-            return response()->json(['message' => "Erro inesperado"], 500);
+            return response()->json(['message' => "Erro inesperado ao excluir categoria"], 500);
         }
     }
 }
