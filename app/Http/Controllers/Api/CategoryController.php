@@ -90,6 +90,15 @@ class CategoryController extends Controller
 
             return response()->json(['data' => $category], 200);
         }
+        catch(UniqueConstraintViolationException $e)
+        {
+            Log::error($e);
+            return response()->json
+            ([
+                'message' => "Erro ao atualizar categoria! O valor informado para o campo Categoria já existe",
+                'error'   => $e->getMessage()
+            ], 400);
+        }
         catch(QueryException $e)
         {
             Log::error($e);
