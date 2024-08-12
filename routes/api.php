@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\UserController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\CategoryController;
 use App\Http\Controllers\Api\ProductController;
@@ -19,5 +20,6 @@ use App\Http\Controllers\Api\ProductController;
 //     return $request->user();
 // });
 
+Route::resource('user', UserController::class)->except('edit', 'create');
 Route::resource('category', CategoryController::class)->except('edit', 'create');
 Route::resource('product', ProductController::class)->except('edit', 'create');
