@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\UserController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\CategoryController;
@@ -20,6 +21,11 @@ use App\Http\Controllers\Api\ProductController;
 //     return $request->user();
 // });
 
-Route::resource('user', UserController::class)->except('edit', 'create');
-Route::resource('category', CategoryController::class)->except('edit', 'create');
-Route::resource('product', ProductController::class)->except('edit', 'create');
+Route::post('auth/login', [AuthController::class, 'login']);
+
+Route::middleware('apiJwt')->group(function ()
+{
+    Route::resource('user', UserController::class)->except('edit', 'create');
+    Route::resource('category', CategoryController::class)->except('edit', 'create');
+    Route::resource('product', ProductController::class)->except('edit', 'create');
+});
