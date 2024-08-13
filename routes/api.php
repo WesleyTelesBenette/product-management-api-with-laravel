@@ -25,6 +25,7 @@ Route::post('auth/login', [AuthController::class, 'login']);
 
 Route::middleware('apiJwt')->group(function ()
 {
+    Route::post('auth/logout', [AuthController::class, 'logout']);
     Route::resource('user', UserController::class)->except('edit', 'create');
     Route::resource('category', CategoryController::class)->except('edit', 'create');
     Route::resource('product', ProductController::class)->except('edit', 'create');

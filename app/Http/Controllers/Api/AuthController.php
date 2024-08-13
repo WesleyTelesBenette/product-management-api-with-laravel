@@ -43,7 +43,7 @@ class AuthController extends Controller
     {
         try
         {
-            JWTAuth::invalidate(JWTAuth::getToken());
+            $user = JWTAuth::invalidate(JWTAuth::getToken());
             return response()->json(['message' => 'Logout realizado com sucesso'], 200);
         }
         catch (TokenInvalidException $e)
