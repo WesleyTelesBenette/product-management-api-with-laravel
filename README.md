@@ -1,66 +1,61 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Product Management API with Laravel
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Uma API de gerenciamento de estoque de produtos, feita para o contexto onde existem funcionários que devem gerenciar os produtos, e administradores que devem gerenciar os produtos e os funcionários.
 
-## About Laravel
+## 🍃 Tecnologias utilizadas
+Para criar está solução, foi utilizado as seguintes tecnologias:
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+- Laravel Framework (v10.10)
+- PHP (v8.1.10)
+- PostgreSQL (v15.6.1.100)
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## 🛠️ Funcionalidades
+Principais recursos do sistema:
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+- Gerenciamento de produtos (CRUD);
+- Gerenciamento de categorias (CRUD);
+- Gerenciamento de usuários (CRUD);
+- Login e Logout (autenticação JWT);
+- Restrição de acesso ao gerenciamento de usuários (role no Token JWT), exclusivo para usuários "admin".
 
-## Learning Laravel
+## ✉️ Comunicação com a API
+### URL da API
+- ~Pendente~
+### Login
+(☑️ rota livre)
+- POST: "api/login" - Login com body de [LoginAuthRequest](https://github.com/WesleyTelesBenette/product-management-api-with-laravel/tree/master/app/Http/Requests), e devolução de Token JWT.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+(🔒 rota com JWT)
+- POST: "api/logout" - Logout com Token JWT no HEAD.
+### Usuários (🔒 Controller com JWT e 🤵🏻 restrição para "admin")
+- GET: "api/user" - Todos os usuários.
+- GET: "api/user/{id}" - Um usuário baseado no Id.
+- POST: "api/user" - Cria um usuário com body de [StoreUserRequest](https://github.com/WesleyTelesBenette/product-management-api-with-laravel/tree/master/app/Http/Requests/StoreUserRequest.php).
+- PUT: "api/user/{id}" - Atualiza um usuário com body de [UpdateUserRequest](https://github.com/WesleyTelesBenette/product-management-api-with-laravel/tree/master/app/Http/Requests/UpdateUserRequest.php).
+- DELETE: "api/user/{id}" - Exclui um usuário baseado no Id.
+### Produtos (🔒 Controller com JWT)
+- GET: "api/product" - Todos os produtos.
+- GET: "api/product/{id}" - Um produto baseado no Id.
+- POST: "api/product" - Cria um produto com body de [StoreProductRequest](https://github.com/WesleyTelesBenette/product-management-api-with-laravel/tree/master/app/Http/Requests/StoreProductRequest.php).
+- PUT: "api/product/{id}" - Atualiza um produto com body de [UpdateProductRequest](https://github.com/WesleyTelesBenette/product-management-api-with-laravel/tree/master/app/Http/Requests/UpdateProductRequest.php).
+- DELETE: "api/product/{id}" - Exclui um produto baseado no Id.
+### Categoria (🔒 Controller com JWT)
+- GET: "api/category" - Todas as categorias.
+- GET: "api//category/{id}" - Uma categoria baseada no Id.
+- POST: "api//category" - Cria uma categoria com body de [StoreCategoryRequest](https://github.com/WesleyTelesBenette/product-management-api-with-laravel/tree/master/app/Http/Requests/StoreCategoryRequest.php).
+- PUT: "api//category/{id}" - Atualiza uma categoria com body de [StoreCategoryRequest](https://github.com/WesleyTelesBenette/product-management-api-with-laravel/tree/master/app/Http/Requests/StoreCategoryRequest.php).
+- DELETE: "api//category/{id}" - Exclui uma categoria baseada no Id.
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+## 🚀 Como Contribuir?
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### Quando Contribuir?
+- Quando você encontrar um bug ou uma falha.
+- Quando achar que há alguma funcionalidade essencial que está faltando no sistema.
+- Quando achar que alguma pequena funcionalidade ou ajuste possa agregar para o sistema de alguma forma.
 
-## Laravel Sponsors
+### Commit
+- Crie uma nova Branch para subir suas alterações, de preferência com o prefixo "pmal-contribution":
+```bash
+git checkout -b pmal-contribution-namebranch master
+```
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
-
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
