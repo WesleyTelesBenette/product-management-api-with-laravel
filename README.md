@@ -20,7 +20,7 @@ Principais recursos do sistema:
 
 ## ✉️ Comunicação com a API
 ### URL da API
-- ~Pendente~
+- https://product-management-api-with-laravel.onrender.com
 ### Login
 (☑️ rota livre)
 - POST: "api/login" - Login com body de [LoginAuthRequest](https://github.com/WesleyTelesBenette/product-management-api-with-laravel/tree/master/app/Http/Requests), e devolução de Token JWT.
